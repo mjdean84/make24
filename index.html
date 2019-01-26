@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>4 Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="dealFunction.js"></script>
+    <script src="clickFunctions.js"></script>
+    <script src="findSolutionsFunction.js"></script>
+    <script src="calcFunction.js"></script>
+    <script src="resetFunction.js"></script>
+    <script src="undoFunction.js"></script>
+    <style>
+        body {
+            background-image:url("felt.jpg");
+        }
+        img:hover {
+            cursor: pointer;
+        }
+        .operator {
+            font-size: 60px;
+            color: lightblue;
+            padding: 30px;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        .operator:hover {
+            cursor: pointer;
+        }
+        .answer {
+            font-size: 30px;
+            color: lightblue;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        #showSolutionsDesc {
+            color:red;
+            font-size:20px;
+        }
+        #showSolutionsDesc:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="color:lightblue; text-align:center; font-size:75px; font-family:'Comic Sans MS', 'Comic Sans', cursive">Make 24</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <h2 id="number1"></h2>
+                <img id="image1" class="responsive" src="card_back.png" onclick="card1Click()" style="max-height:120px" />
+            </div>
+            <div class="col-xs-3">
+                <h2 id="number2"></h2>
+                <img id="image2" class="responsive" src="card_back.png" onclick="card2Click()" style="max-height:120px" />
+                
+            </div>
+            <div class="col-xs-3">
+                <h2 id="number3"></h2>
+                <img id="image3" class="responsive" src="card_back.png" onclick="card3Click()" style="max-height:120px" />
+            </div>
+            <div class="col-xs-3">
+                <h2 id="number4"></h2>
+                <img id="image4" class="responsive" src="card_back.png" onclick="card4Click()" style="max-height:120px" />
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <span class="operator" id="plusBtn" onclick="plusClick()">+</span>
+        <span class="operator" id="minusBtn" onclick="minusClick()">-</span>
+        <span class="operator" id="multiplyBtn" onclick="multiplyClick()">x</span>
+        <span class="operator" id="divideBtn" onclick="divideClick()">/</span>
+        <span class="operator" id="equalBtn" onclick="calc()">=</span>
+    </div>
+    
+    <br />
+    <br />
+    <div class="container">
+        <button id="deal" onclick="dealCards()">Deal</button>
+        <button id="resetBtn">Reset</button>
+        <button id="undoBtn" onclick="undo()">Undo</button>
+        <!--<div class="container">-->
+            <span class="answer" id="firstPick" style="margin-left: 40px"></span>
+            <span class="answer" id="oper1"></span>
+            <span class="answer" id="secondPick"></span>
+            <span class="answer" id="oper2"></span>
+            <span class="answer" id="thirdPick"></span>
+            <span class="answer" id="oper3"></span>
+            <span class="answer" id="fourthPick"></span>
+            <span class="answer" id="ans"></span>
+        <!--</div>-->
+        <p id="result" style="font-size:40px"></p>
+        <p id="solution" style="display:none; color:lightblue; font-size:25px"></p>
+        <img src="thumbsDown.jpg" class="responsive" id="showSolutionsBtn" style="max-height:80px" />
+        <p id="showSolutionsDesc">I give up, tell me</p>
+    </div>
+</body>
+</html>

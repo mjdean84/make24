@@ -32,10 +32,7 @@ function undo() {
     }
     else if (oper1 != null) {
         $("#oper1").html("");
-
-        console.log(oper1);
         oper1 = null;
-        console.log(oper1);
     }
     else if (firstCard != null) {
         $("#firstPick").html("");
@@ -50,7 +47,6 @@ function replaceImg() {
     switch (imagePos.pop()) {
         case 1:
             $("#card1Img").attr("src", card1.cardFace());
-            console.log(card1.cardFace());
             break;
         case 2:
             $("#card2Img").attr("src", card2.cardFace());

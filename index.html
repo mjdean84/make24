@@ -13,6 +13,28 @@
     <script src="findSolutions.js"></script>
     <script src="calc.js"></script>
     <script src="undoReset.js"></script>
+    <script>
+        function toggleFS() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullscreen) {
+                document.documentElement.mozRequestFullscreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            }
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullscreen) {
+                document.mozCancelFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+    </script>
     <style>
         body {
             background-image: url("felt.jpg");
@@ -50,7 +72,7 @@
     </style>
 </head>
 <body>
-
+    <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
     <h1 style="color:lightblue; text-align:center; font-size:75px; font-family:'Comic Sans MS',
     'Comic Sans', cursive">Make 24</h1>
     <br />

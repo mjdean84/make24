@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function findSolutions() {
     solutions = "";
+    var count = 0;
     var numbers = [card1.value, card2.value, card3.value, card4.value];
     var num1 = 0, num2 = 0, num3 = 0, num4 = 0, op1 = 0, op2 = 0, op3 = 0;
     for (num1 = 0; num1 < 4; num1++) {
@@ -28,6 +29,8 @@ function findSolutions() {
                                     + "" + showOp(op2) + "" +
                                     numbers[num3] + "" + showOp(op3) + "" + numbers[num4] + "<br>";
 
+                                count++;
+
                                 if (solutions.includes(solution)) continue;
                                 solutions += solution;
                             }
@@ -37,7 +40,19 @@ function findSolutions() {
             }
         }
     }
+    console.log(count);
     if (solutions == "") dealCards();
+    var difficulty = $("input:radio[name=difficulty]:checked").val();
+    if (difficulty == "easy") {
+        if (solutions.includes("/") || solutions.includes("x")) dealCards();
+    }
+    if (difficulty == "medium") {
+        if (solutions.includes("/")) dealCards();
+    }
+    if (difficulty == "hard") {
+        if (solutions.includes("+")) dealCards();
+    }
+    console.log(difficulty);
 }
 
 function checkSol(num1, op, num2) {

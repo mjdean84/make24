@@ -18,8 +18,20 @@
             background-image: url("felt.jpg");
         }
 
+        .difficulty {
+            color: lightblue;
+        }
+
         img:hover {
             cursor: pointer;
+        }
+
+        input[type=radio]:checked{
+            color: lightblue
+        }
+
+        .radio-toolbar label {
+            color: lightblue;
         }
 
         .operator {
@@ -63,17 +75,19 @@
         :-ms-fullscreen #appName {
             display: none;
         }
+
     </style>
     <script>
         function toggleFS() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullscreen) {
-                document.documentElement.mozRequestFullscreen();
+            var root = document.documentElement;
+            if (root.requestFullscreen) {
+                root.requestFullscreen();
+            } else if (root.mozRequestFullscreen) {
+                root.mozRequestFullscreen();
             } else if (document.documentElement.webkitRequestFullscreen) {
-                document.documentElement.webkitRequestFullscreen();
+                root.webkitRequestFullscreen();
             } else if (document.documentElement.msRequestFullscreen) {
-                document.documentElement.msRequestFullscreen();
+                root.msRequestFullscreen();
             }
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -88,9 +102,16 @@
     </script>
 </head>
 <body>
-    <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
+    <div class="container">
+        <input type="radio" name="difficulty" id="easy" value="easy" />Easy
+        <input type="radio" name="difficulty" id="medium" value="medium" />Medium
+        <input type="radio" name="difficulty" id="hard" value="hard" />Hard
+        <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
+    </div>
     <h1 id="appName" style="color:lightblue; text-align:center; font-size:75px; font-family:'Comic Sans MS',
-    'Comic Sans', cursive">Make 24</h1>
+    'Comic Sans', cursive">
+        Make 24
+    </h1>
     <br />
     <div class="container">
         <div class="row">
@@ -104,11 +125,11 @@
 
             </div>
             <div class="col-xs-3">
-                <img id="card3Img" class="responsive" src="card_back.png" onclick="card3.click()" 
+                <img id="card3Img" class="responsive" src="card_back.png" onclick="card3.click()"
                      style="max-height:120px" />
             </div>
             <div class="col-xs-3">
-                <img id="card4Img" class="responsive" src="card_back.png" onclick="card4.click()" 
+                <img id="card4Img" class="responsive" src="card_back.png" onclick="card4.click()"
                      style="max-height:120px" />
             </div>
         </div>
@@ -135,7 +156,7 @@
     <div class="container">
         <p id="result" style="font-size:40px"></p>
         <p id="solution" style="display:none; color:lightblue; font-size:25px"></p>
-        <img src="thumbsDown.jpg" class="responsive" id="showSolutionsBtn" style="max-height:80px" />
+        <img src="thumbsDown.jpg" id="showSolutionsBtn" style="max-height:80px" />
         <p id="showSolutionsDesc">I give up, tell me</p>
     </div>
 </body>

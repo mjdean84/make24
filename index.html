@@ -33,6 +33,12 @@
             } else if (document.msExitFullscreen) {
                 document.msExitFullscreen();
             }
+            var appName = document.getElementById("appName");
+            if (appName.style.display === "none") {
+                appName.style.display = "block";
+            } else {
+                appName.style.display = "none";
+            }
         }
     </script>
     <style>

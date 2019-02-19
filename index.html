@@ -9,13 +9,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="deal.js"></script>
-    <!--<script src="click.js"></script>-->
     <script src="findSolutions.js"></script>
     <script src="calc.js"></script>
     <script src="undoReset.js"></script>
     <style>
         body {
             background-image: url("felt.jpg");
+        }
+
+        #appName {
+            color: lightblue;
+            text-align: center;
+            font-size: 75px;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
         }
 
         label {
@@ -133,10 +139,7 @@
         <label for="hard">Hard</label>
         <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
     </div>
-    <h1 id="appName" style="color:lightblue; text-align:center; font-size:75px; font-family:'Comic Sans MS',
-    'Comic Sans', cursive">
-        Make 24
-    </h1>
+    <h1 id="appName">Make 24</h1>
     <br />
     <div class="container">
         <div class="row">
@@ -166,9 +169,6 @@
         <span class="operator" id="divideBtn" onclick="divideClick()">/</span>
     </div>
     <div class="container">
-        <button id="dealBtn" onclick="dealCards()">Deal</button>
-        <button id="resetBtn">Reset</button>
-        <button id="undoBtn" onclick="undo()">Undo</button>
         <span class="answer" id="firstPick" style="margin-left: 40px"></span>
         <span class="answer" id="oper1"></span>
         <span class="answer" id="secondPick"></span>
@@ -177,6 +177,11 @@
         <span class="answer" id="oper3"></span>
         <span class="answer" id="fourthPick"></span>
         <span class="answer" id="ans"></span>
+    </div>
+    <div class="container">
+        <button id="dealBtn" onclick="dealCards()">Deal</button>
+        <button id="resetBtn">Reset</button>
+        <button id="undoBtn" onclick="undo()">Undo</button>
     </div>
     <div class="container">
         <p id="result" style="font-size:40px"></p>

@@ -24,15 +24,14 @@ function findSolutions() {
                         for (op3 = 0; op3 < 4; op3++) {
                             if (checkSol(checkSol(checkSol(numbers[num1], op1, numbers[num2]), op2,
                                 numbers[num3]), op3, numbers[num4]) == 24) {
-
                                 solution = numbers[num1] + "" + showOp(op1) + "" + numbers[num2]
                                     + "" + showOp(op2) + "" +
                                     numbers[num3] + "" + showOp(op3) + "" + numbers[num4] + "<br>";
-
-                                count++;
-
                                 if (solutions.includes(solution)) continue;
-                                solutions += solution;
+                                else {
+                                    solutions += solution;
+                                    count++;
+                                }
                             }
                         }
                     }
@@ -40,7 +39,6 @@ function findSolutions() {
             }
         }
     }
-    console.log(count);
     if (solutions == "") dealCards();
     var difficulty = $("input:radio[name=difficulty]:checked").val();
     if (difficulty == "easy") {
@@ -50,9 +48,8 @@ function findSolutions() {
         if (solutions.includes("/")) dealCards();
     }
     if (difficulty == "hard") {
-        if (solutions.includes("+")) dealCards();
+        if (count >= 3 || !solutions.includes("/")) dealCards();
     }
-    console.log(difficulty);
 }
 
 function checkSol(num1, op, num2) {

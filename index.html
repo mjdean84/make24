@@ -18,8 +18,17 @@
             background-image: url("felt.jpg");
         }
 
-        .difficulty {
+        label {
             color: lightblue;
+            font-size: 20px;
+        }
+
+        label:hover {
+            cursor: pointer;
+        }
+
+        img {
+            position:relative;
         }
 
         img:hover {
@@ -76,6 +85,17 @@
             display: none;
         }
 
+        button {
+            color: white;
+            background-color: black;
+            outline: 1px solid blue;
+            width: 150px;
+        }
+        
+        button:hover {
+            background-color: green;
+        }
+
     </style>
     <script>
         function toggleFS() {
@@ -103,9 +123,14 @@
 </head>
 <body>
     <div class="container">
-        <input type="radio" name="difficulty" id="easy" value="easy" />Easy
-        <input type="radio" name="difficulty" id="medium" value="medium" />Medium
-        <input type="radio" name="difficulty" id="hard" value="hard" />Hard
+        <input type="radio" class="difficulty" name="difficulty" id="random" value="random" checked />
+        <label for="random">Random</label>
+        <input type="radio" class="difficulty" name="difficulty" id="easy" value="easy" />
+        <label for="easy">Easy</label>
+        <input type="radio" class="difficulty" name="difficulty" id="medium" value="medium" />
+        <label for="medium">Medium</label>
+        <input type="radio" class="difficulty" name="difficulty" id="hard" value="hard" />
+        <label for="hard">Hard</label>
         <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
     </div>
     <h1 id="appName" style="color:lightblue; text-align:center; font-size:75px; font-family:'Comic Sans MS',

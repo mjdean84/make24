@@ -12,6 +12,8 @@ $(document).ready(function () {
         $("#firstPick").html(""); $("#secondPick").html(""); $("#thirdPick").html(""); $("#fourthPick").html("");
         $("#result").html(""); $("#ans").html(""); $("#solution").hide();
     });
+
+    // Flip Cards when Clicked
     $("#card1Img").click(function () {
         $("#card1Img").attr("src", card1.cardBack);
     });
@@ -33,7 +35,6 @@ var solutions;
 var imagePos = [];
 
 // Create Card Object
-
 function Card() {
     this.value = Math.ceil(Math.random() * 13);
     this.cardFace = function () {
@@ -103,7 +104,6 @@ function Card() {
                 calc();
             }
             this.used = true;
-            this.postion;
             imagePos.push(this.position);
         }
     }

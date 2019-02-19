@@ -22,8 +22,14 @@ function findSolutions() {
                 for (op1 = 0; op1 < 4; op1++) {
                     for (op2 = 0; op2 < 4; op2++) {
                         for (op3 = 0; op3 < 4; op3++) {
-                            if (checkSol(checkSol(checkSol(numbers[num1], op1, numbers[num2]), op2,
-                                numbers[num3]), op3, numbers[num4]) == 24) {
+                            var total1 = checkSol(numbers[num1], op1, numbers[num2]);
+                            var total2 = checkSol(total1, op2, numbers[num3]);
+                            var total3 = checkSol(total2, op3, numbers[num4]);
+                            if (total1 % 1 != 0 || total2 % 1 != 0 || total3 % 1 != 0 || total1 < 0 ||
+                                total2 < 0 || total3 < 0) {
+                                continue;
+                            }
+                            if (total3 == 24) {
                                 solution = numbers[num1] + "" + showOp(op1) + "" + numbers[num2]
                                     + "" + showOp(op2) + "" +
                                     numbers[num3] + "" + showOp(op3) + "" + numbers[num4] + "<br>";

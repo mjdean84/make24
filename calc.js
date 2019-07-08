@@ -12,8 +12,6 @@ function calc() {
                 arith(oper3, fourthCard);
 
                 if (total == 24) {
-                    dealCards();
-                    console.log("dealCards");
                     $("#result").html("YOU'RE RIGHT!!!").css("color", "lightgreen");
                 } else {
                     $("#result").html("NOPE, TRY AGAIN").css("color", "red");

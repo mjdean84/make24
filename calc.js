@@ -12,7 +12,7 @@ function calc() {
                 arith(oper3, fourthCard);
 
                 if (total == 24) {
-                    $("#result").html("YOU'RE RIGHT!!!").css("color", "lightgreen");
+                    $("#result").html("YOU'RE RIGHT!!!");
                 } else {
                     $("#result").html("NOPE, TRY AGAIN").css("color", "red");
                 }

@@ -41,6 +41,14 @@
             cursor: pointer;
         }
 
+        .cards {
+            transition: all 2s ease;
+        }
+
+        .rotated {
+            transform: rotate(1080deg);
+        }
+
         input[type=radio]:checked{
             color: lightblue
         }
@@ -97,11 +105,11 @@
             outline: 1px solid blue;
             width: 150px;
         }
-        
+
         button:hover {
             background-color: green;
         }
-        
+
         @-webkit-keyframes colorchange {
             0% {
                 color: lightgreen;
@@ -163,6 +171,8 @@
         }
     </script>
 </head>
+
+
 <body>
     <div class="container">
         <input type="radio" class="difficulty" name="difficulty" id="random" value="random" checked />
@@ -174,26 +184,28 @@
         <input type="radio" class="difficulty" name="difficulty" id="hard" value="hard" />
         <label for="hard">Hard</label>
         <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
+        <br />
+        <a style="color:lightblue; float:right; margin-right:30px" href="solutionFinder.html">Solution Finder</a>
     </div>
     <h1 id="appName">Make 24</h1>
     <br />
     <div class="container">
         <div class="row">
             <div class="col-xs-3">
-                <img id="card1Img" class="responsive" src="card_back.png" onclick="card1.click()"
+                <img id="card1Img" class="responsive cards" src="card_back.png" onclick="card1.click()"
                      style="max-height:120px" />
             </div>
             <div class="col-xs-3">
-                <img id="card2Img" class="responsive" src="card_back.png" onclick="card2.click()"
+                <img id="card2Img" class="responsive cards" src="card_back.png" onclick="card2.click()"
                      style="max-height:120px" />
 
             </div>
             <div class="col-xs-3">
-                <img id="card3Img" class="responsive" src="card_back.png" onclick="card3.click()"
+                <img id="card3Img" class="responsive cards" src="card_back.png" onclick="card3.click()"
                      style="max-height:120px" />
             </div>
             <div class="col-xs-3">
-                <img id="card4Img" class="responsive" src="card_back.png" onclick="card4.click()"
+                <img id="card4Img" class="responsive cards" src="card_back.png" onclick="card4.click()"
                      style="max-height:120px" />
             </div>
         </div>

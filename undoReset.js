@@ -2,9 +2,8 @@
 function undo() {
     if (fourthCard != null) {
         $("#fourthPick").html("");
-        card4.used = false;
         fourthCard = null;
-        replaceImg();
+        replaceImgAndUsed();
         calc();
     }
     else if (oper3 != null) {
@@ -13,9 +12,8 @@ function undo() {
     }
     else if (thirdCard != null) {
         $("#thirdPick").html("");
-        card3.used = false;
         thirdCard = null;
-        replaceImg();
+        replaceImgAndUsed();
         calc();
     }
     else if (oper2 != null) {
@@ -25,9 +23,8 @@ function undo() {
     else if (secondCard != null) {
         $("#secondPick").html("");
         $("#ans").html("");
-        card2.used = false;
         secondCard = null;
-        replaceImg();
+        replaceImgAndUsed();
         calc();
     }
     else if (oper1 != null) {
@@ -36,29 +33,31 @@ function undo() {
     }
     else if (firstCard != null) {
         $("#firstPick").html("");
-        card1.used = false;
         firstCard = null;
-        replaceImg();
+        replaceImgAndUsed();
         calc();
     }
 }
 
-function replaceImg() {
+function replaceImgAndUsed() {
     switch (imagePos.pop()) {
         case 1:
             $("#card1Img").attr("src", card1.cardFace());
+            card1.used = false;
             break;
         case 2:
             $("#card2Img").attr("src", card2.cardFace());
+            card2.used = false;
             break;
         case 3:
             $("#card3Img").attr("src", card3.cardFace());
+            card3.used = false;
             break;
         case 4:
             $("#card4Img").attr("src", card4.cardFace());
+            card4.used = false;
     }
 }
-
 
 // Reset Button
 $(document).ready(function () {

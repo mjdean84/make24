@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Solution Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-image: url("felt.jpg");
+        }
+
+        #appName {
+            color: lightblue;
+            text-align: center;
+            font-size: 75px;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+
+        input[type=text] {
+            width: 50px;
+            margin-left: 25px;
+        }
+
+        button {
+            color: white;
+            background-color: black;
+            outline: 1px solid blue;
+            width: 150px;
+            margin-left: 25px;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+    </style>
+    <script>
+        var solutions = "";
+
+        function findSolutions() {
+            var numbers = [parseInt($("input:text[name=num1]").val()),
+            parseInt($("input:text[name=num2]").val()),
+            parseInt($("input:text[name=num3]").val()),
+            parseInt($("input:text[name=num4]").val())];
+            var count = 0;
+            solutions = "";
+            var num1 = 0, num2 = 0, num3 = 0, num4 = 0, op1 = 0, op2 = 0, op3 = 0;
+            for (num1 = 0; num1 < 4; num1++) {
+                for (num2 = 0; num2 < 4; num2++) {
+                    if (num2 == num1) continue;
+                    for (num3 = 0; num3 < 4; num3++) {
+                        num4 = 6 - num1 - num2 - num3;
+                        if (num3 == num1 || num3 == num2) continue;
+                        for (op1 = 0; op1 < 4; op1++) {
+                            for (op2 = 0; op2 < 4; op2++) {
+                                for (op3 = 0; op3 < 4; op3++) {
+                                    var total1 = checkSol(numbers[num1], op1, numbers[num2]);
+                                    var total2 = checkSol(total1, op2, numbers[num3]);
+                                    var total3 = checkSol(total2, op3, numbers[num4]);
+                                    if (total1 % 1 != 0 || total2 % 1 != 0 || total3 % 1 != 0 || total1 < 0 ||
+                                        total2 < 0 || total3 < 0) {
+                                        continue;
+                                    }
+                                    if (total3 == 24) {
+                                        solution = numbers[num1] + "" + showOp(op1) + "" + numbers[num2]
+                                            + "" + showOp(op2) + "" +
+                                            numbers[num3] + "" + showOp(op3) + "" + numbers[num4] + "<br>";
+                                        if (solutions.includes(solution)) continue;
+                                        else {
+                                            solutions += solution;
+                                            count++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            document.getElementById("solution").innerHTML = "<u>" + "There are " + count + " solutions" + "</u>" + "<br>" + solutions;
+        }
+
+        function checkSol(num1, op, num2) {
+            switch (op) {
+                case 0:
+                    return num1 + num2;
+                    break;
+                case 1:
+                    return num1 - num2;
+                    break;
+                case 2:
+                    return num1 * num2;
+                    break;
+                case 3:
+                    return num1 / num2;
+                    break;
+            }
+        }
+
+        function showOp(op) {
+            switch (op) {
+                case 0:
+                    return "+";
+                    break;
+                case 1:
+                    return "-";
+                    break;
+                case 2:
+                    return "x";
+                    break;
+                case 3:
+                    return "/";
+                    break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button id="fsButton" onclick="toggleFS()" style="float:right; margin-right:30px">Fullscreen</button>
+        <br />
+        <br />
+        <a style="color:lightblue; float:right; margin-right:30px" href="index.html">Solution Finder</a>
+    </div>
+    
+    <h1 id="appName">Make 24</h1>
+    <h3 style="margin-left:25px; color:lightblue">Enter your numbers</h3>
+    <input type="text" name="num1" /><input type="text" name="num2" /><input type="text" name="num3" />
+    <input type="text" name="num4" />
+    <button onclick="findSolutions()">Find</button>
+    <p id="solution" style="color:lightblue; font-size:25px; margin-left:25px"></p>
+</body>
+</html>

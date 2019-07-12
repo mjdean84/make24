@@ -8,6 +8,14 @@ $(document).ready(function () {
     });
 });
 
+var hint1;
+var hint2;
+var hint3;
+var hint4;
+var hint5;
+var hint6;
+var hint7;
+
 function findSolutions() {
     solutions = "";
     var count = 0;
@@ -30,6 +38,16 @@ function findSolutions() {
                                 continue;
                             }
                             if (total3 == 24) {
+                                if (hint1 == null) {
+                                    hint1 = showOp(op1);
+                                    hint2 = numbers[num1];
+                                    hint3 = numbers[num2];
+                                    hint4 = showOp(op2);
+                                    hint5 = numbers[num3];
+                                    hint6 = showOp(op3);
+                                    hint7 = numbers[num4];
+                                    console.log(hint1, hint2, hint3);
+                                }
                                 solution = numbers[num1] + "" + showOp(op1) + "" + numbers[num2]
                                     + "" + showOp(op2) + "" +
                                     numbers[num3] + "" + showOp(op3) + "" + numbers[num4] + "<br>";
@@ -91,3 +109,4 @@ function showOp(op) {
             break;
     }
 }
+

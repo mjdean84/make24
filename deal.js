@@ -8,8 +8,10 @@ $(document).ready(function () {
         $("#card4Img").hide().attr("src", card4.cardFace()).fadeIn(1000).attr("title", card4.value);
 
         // Refresh page and values
-        $("#oper1").html(""); $("#oper2").html(""); $("#oper3").html("");
-        $("#firstPick").html(""); $("#secondPick").html(""); $("#thirdPick").html(""); $("#fourthPick").html("");
+        $("#oper1").html("").css("color", "lightblue"); $("#oper2").html("").css("color", "lightblue");
+        $("#oper3").html("").css("color", "lightblue");
+        $("#firstPick").html("").css("color", "lightblue"); $("#secondPick").html("").css("color", "lightblue");
+        $("#thirdPick").html("").css("color", "lightblue"); $("#fourthPick").html("").css("color", "lightblue");
         $("#result").html(""); $("#ans").html(""); $("#solution").hide();
     });
 
@@ -129,6 +131,15 @@ function dealCards() {
     oper2 = null;
     oper3 = null;
 
+    hint1 = null;
+    hint2 = null;
+    hint3 = null;
+    hint4 = null;
+    hint5 = null;
+    hint6 = null;
+    hint7 = null;
+
+
     findSolutions();
     if (total < 0) {
         undo();
@@ -167,6 +178,44 @@ function operClick(op) {
     else if (oper3 == null) {
         oper3 = op;
         $("#oper3").html(op);
+        calc();
+    }
+}
+
+function showHint() {
+    if (oper1 == null || oper1 != hint1) {
+        oper1 = hint1;
+        $("#oper1").html(hint1).css("color", "red");
+        calc();
+    }
+    else if (firstCard == null || firstCard != hint2) {
+        firstCard = hint2;
+        $("#firstPick").html(hint2).css("color", "red");
+        calc();
+    }
+    else if (secondCard == null || secondCard != hint3) {
+        secondCard = hint3;
+        $("#secondPick").html(hint3).css("color", "red");
+        calc();
+    }
+    else if (oper2 == null || oper2 != hint4) {
+        oper2 = hint4;
+        $("#oper2").html(hint4).css("color", "red");
+        calc();
+    }
+    else if (thirdCard == null || thirdCard != hint5) {
+        thirdCard = hint5;
+        $("#thirdPick").html(hint5).css("color", "red");
+        calc();
+    }
+    else if (oper3 == null || oper3 != hint6) {
+        oper3 = hint6;
+        $("#oper3").html(hint6).css("color", "red");
+        calc();
+    }
+    else if (fourthCard == null || fourthCard != hint7) {
+        fourthCard = hint7;
+        $("#fourthPick").html(hint7).css("color", "red");
         calc();
     }
 }

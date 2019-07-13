@@ -13,7 +13,7 @@ function calc() {
 
                 if (total == 24) {
                     $("#result").html("YOU'RE RIGHT!!!").css("color", "lightgreen").css("-webkit-animation",
-                        "colorchange 20s infinite alternate");
+                        "colorchange 10s infinite alternate");
                 } else {
                     $("#result").html("NOPE, TRY AGAIN").css("color", "red");
                 }
